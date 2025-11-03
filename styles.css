@@ -68,45 +68,16 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    color: white;
     position: relative;
     overflow: hidden;
     padding-top: 80px;
 }
 
 .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
-    z-index: 0;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7) 0%, rgba(59, 130, 246, 0.6) 50%, rgba(6, 182, 212, 0.6) 100%);
-    z-index: 1;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    flex: 1;
-    max-width: 700px;
-    z-index: 2;
-    text-align: center;
-    position: relative;
+    display: block;
 }
 
 .hero h1 {
