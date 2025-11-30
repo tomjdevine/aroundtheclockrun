@@ -2,18 +2,20 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
-});
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -47,49 +49,51 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
-// Registration Modal
-const registrationModal = document.getElementById('registrationModal');
-const openRegistrationModal = document.getElementById('openRegistrationModal');
-const closeRegistrationModal = document.getElementById('closeRegistrationModal');
-const cancelRegistration = document.getElementById('cancelRegistration');
+// Registration Modal - Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const registrationModal = document.getElementById('registrationModal');
+    const openRegistrationModal = document.getElementById('openRegistrationModal');
+    const closeRegistrationModal = document.getElementById('closeRegistrationModal');
+    const cancelRegistration = document.getElementById('cancelRegistration');
 
-if (openRegistrationModal) {
-    openRegistrationModal.addEventListener('click', () => {
-        registrationModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-}
+    function closeModal() {
+        if (registrationModal) {
+            registrationModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
 
-if (closeRegistrationModal) {
-    closeRegistrationModal.addEventListener('click', closeModal);
-}
+    if (openRegistrationModal && registrationModal) {
+        openRegistrationModal.addEventListener('click', () => {
+            registrationModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
 
-if (cancelRegistration) {
-    cancelRegistration.addEventListener('click', closeModal);
-}
+    if (closeRegistrationModal) {
+        closeRegistrationModal.addEventListener('click', closeModal);
+    }
 
-// Close modal when clicking outside
-if (registrationModal) {
-    registrationModal.addEventListener('click', (e) => {
-        if (e.target === registrationModal) {
+    if (cancelRegistration) {
+        cancelRegistration.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking outside
+    if (registrationModal) {
+        registrationModal.addEventListener('click', (e) => {
+            if (e.target === registrationModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && registrationModal && registrationModal.classList.contains('active')) {
             closeModal();
         }
     });
-}
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && registrationModal && registrationModal.classList.contains('active')) {
-        closeModal();
-    }
 });
-
-function closeModal() {
-    if (registrationModal) {
-        registrationModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
 
 // Form handling with Resend integration
 const signupForm = document.getElementById('signupForm');
@@ -231,17 +235,23 @@ if (contactForm) {
 
 // Helper function to show messages
 function showMessage(message, type) {
-    formMessage.textContent = message;
-    formMessage.className = `form-message ${type}`;
-    formMessage.style.display = 'block';
-    
-    // Scroll to message
-    formMessage.scrollIntoView({ behavior: 'smooth' });
-    
-    // Hide message after 5 seconds
-    setTimeout(() => {
-        formMessage.style.display = 'none';
-    }, 5000);
+    const formMessage = document.getElementById('formMessage');
+    if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = 'block';
+        
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    } else {
+        // Fallback: show alert if formMessage element doesn't exist
+        alert(message);
+    }
 }
 
 // Generate HTML for signup email
@@ -318,16 +328,18 @@ function generateContactEmailHTML(data) {
 // Hero animations on load
 document.addEventListener('DOMContentLoaded', () => {
     const heroElements = document.querySelectorAll('.hero-left > *, .hero-right');
-    heroElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        setTimeout(() => {
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
+    if (heroElements.length > 0) {
+        heroElements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }
 });
 
 // Navbar scroll effect
