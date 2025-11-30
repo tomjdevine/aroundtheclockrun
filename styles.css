@@ -248,29 +248,25 @@ body {
 
 .visual-stats {
     display: flex;
-    gap: 32px;
+    flex-direction: column;
+    gap: 16px;
     margin-top: 24px;
+    width: 100%;
 }
 
 .visual-stat {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
+.stat-text {
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #1e293b;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-top: 4px;
-    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
 }
 
 @keyframes rotate {
@@ -679,8 +675,8 @@ body {
         max-width: 400px;
     }
     
-    .stat-number {
-        font-size: 2rem;
+    .stat-text {
+        font-size: 1rem;
     }
     
     .about-content {
@@ -707,11 +703,11 @@ body {
     }
     
     .visual-stats {
-        gap: 20px;
+        gap: 12px;
     }
     
-    .stat-number {
-        font-size: 1.5rem;
+    .stat-text {
+        font-size: 0.9rem;
     }
     
     .cta-button-primary {
