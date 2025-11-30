@@ -47,61 +47,144 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
+// Registration Modal
+const registrationModal = document.getElementById('registrationModal');
+const openRegistrationModal = document.getElementById('openRegistrationModal');
+const closeRegistrationModal = document.getElementById('closeRegistrationModal');
+const cancelRegistration = document.getElementById('cancelRegistration');
+
+if (openRegistrationModal) {
+    openRegistrationModal.addEventListener('click', () => {
+        registrationModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+if (closeRegistrationModal) {
+    closeRegistrationModal.addEventListener('click', closeModal);
+}
+
+if (cancelRegistration) {
+    cancelRegistration.addEventListener('click', closeModal);
+}
+
+// Close modal when clicking outside
+if (registrationModal) {
+    registrationModal.addEventListener('click', (e) => {
+        if (e.target === registrationModal) {
+            closeModal();
+        }
+    });
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && registrationModal && registrationModal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+function closeModal() {
+    if (registrationModal) {
+        registrationModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
 // Form handling with Resend integration
 const signupForm = document.getElementById('signupForm');
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 // Signup form submission
-signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitButton = signupForm.querySelector('.submit-button');
-    const buttonText = submitButton.querySelector('.button-text');
-    const buttonLoading = submitButton.querySelector('.button-loading');
-    
-    // Show loading state
-    buttonText.style.display = 'none';
-    buttonLoading.style.display = 'inline-block';
-    submitButton.disabled = true;
-    
-    try {
-        const formData = new FormData(signupForm);
-        const data = Object.fromEntries(formData);
+if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        // Send email using Resend
-        const response = await fetch('/api/send-signup-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                to: 'info@aroundtheclockrun.nl', // Your email address
-                subject: `New Team Registration: ${data.teamName}`,
-                html: generateSignupEmailHTML(data),
-                teamData: data
-            })
-        });
+        const submitButton = signupForm.querySelector('.btn-primary');
+        const buttonText = submitButton.querySelector('.button-text');
+        const buttonLoading = submitButton.querySelector('.button-loading');
         
-        if (response.ok) {
-            showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
-            signupForm.reset();
-        } else {
-            throw new Error('Failed to send email');
+        // Show loading state
+        if (buttonText) buttonText.style.display = 'none';
+        if (buttonLoading) buttonLoading.style.display = 'inline-block';
+        submitButton.disabled = true;
+        
+        try {
+            const formData = new FormData(signupForm);
+            const data = Object.fromEntries(formData);
+            
+            // For now, use mailto as fallback until backend is set up
+            // You can replace this with your API endpoint later
+            const emailBody = generateEmailBody(data);
+            const mailtoLink = `mailto:info@aroundtheclockrun.nl?subject=Team Registration: ${encodeURIComponent(data.teamName)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Try to send via API if available, otherwise use mailto
+            try {
+                const response = await fetch('/api/send-signup-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        to: 'info@aroundtheclockrun.nl',
+                        subject: `New Team Registration: ${data.teamName}`,
+                        html: generateSignupEmailHTML(data),
+                        teamData: data
+                    })
+                });
+                
+                if (response.ok) {
+                    showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
+                    signupForm.reset();
+                    setTimeout(() => {
+                        closeModal();
+                    }, 2000);
+                } else {
+                    throw new Error('API not available');
+                }
+            } catch (apiError) {
+                // Fallback to mailto
+                window.location.href = mailtoLink;
+                showMessage('Opening your email client to send registration details...', 'success');
+                signupForm.reset();
+                setTimeout(() => {
+                    closeModal();
+                }, 1500);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly at info@aroundtheclockrun.nl', 'error');
+        } finally {
+            // Reset button state
+            if (buttonText) buttonText.style.display = 'inline-block';
+            if (buttonLoading) buttonLoading.style.display = 'none';
+            submitButton.disabled = false;
         }
-    } catch (error) {
-        console.error('Error:', error);
-        showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly.', 'error');
-    } finally {
-        // Reset button state
-        buttonText.style.display = 'inline-block';
-        buttonLoading.style.display = 'none';
-        submitButton.disabled = false;
-    }
-});
+    });
+}
+
+function generateEmailBody(data) {
+    return `Team Registration Form Submission
+
+Team Name: ${data.teamName}
+Team Captain: ${data.teamCaptain}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Team Description:
+${data.description || 'N/A'}
+
+Team Members:
+${data.teamMembers}
+
+---
+This registration was submitted through the Around the Clock Run website.`;
+}
 
 // Contact form submission
-contactForm.addEventListener('submit', async (e) => {
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const submitButton = contactForm.querySelector('.submit-button');
@@ -143,7 +226,8 @@ contactForm.addEventListener('submit', async (e) => {
         submitButton.textContent = originalText;
         submitButton.disabled = false;
     }
-});
+    });
+}
 
 // Helper function to show messages
 function showMessage(message, type) {
@@ -312,19 +396,23 @@ function validateForm(form) {
 }
 
 // Add validation to forms
-signupForm.addEventListener('submit', (e) => {
-    if (!validateForm(signupForm)) {
-        e.preventDefault();
-        showMessage('Please fill in all required fields correctly.', 'error');
-    }
-});
+if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+        if (!validateForm(signupForm)) {
+            e.preventDefault();
+            showMessage('Please fill in all required fields correctly.', 'error');
+        }
+    });
+}
 
-contactForm.addEventListener('submit', (e) => {
-    if (!validateForm(contactForm)) {
-        e.preventDefault();
-        showMessage('Please fill in all required fields correctly.', 'error');
-    }
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        if (!validateForm(contactForm)) {
+            e.preventDefault();
+            showMessage('Please fill in all required fields correctly.', 'error');
+        }
+    });
+}
 
 // Remove error styling on input
 document.querySelectorAll('input, textarea, select').forEach(field => {

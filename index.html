@@ -41,7 +41,7 @@
                     <h1>24 Hours. One Track. One Goal.</h1>
                     <p class="hero-description">An endurance relay unlike any other: for 24 hours, teams keep one runner on the move at all times, circling the AVC track to raise critical funds for cystic fibrosis research and support through the NCFS.</p>
                     <div class="hero-cta">
-                        <a href="#contact" class="cta-button-primary">Register Your Team →</a>
+                        <button class="cta-button-primary" id="openRegistrationModal">Register Your Team →</button>
                     </div>
                 </div>
                 <div class="hero-right">
@@ -244,5 +244,59 @@
             </div>
         </div>
     </footer>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register Your Team</h2>
+                <button class="modal-close" id="closeRegistrationModal">&times;</button>
+            </div>
+            <form id="signupForm" class="registration-form">
+                <div class="form-group">
+                    <label for="teamName">Team Name *</label>
+                    <input type="text" id="teamName" name="teamName" required placeholder="Enter your team name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="teamCaptain">Team Captain Name *</label>
+                    <input type="text" id="teamCaptain" name="teamCaptain" required placeholder="Full name of team captain">
+                </div>
+                
+                <div class="form-group">
+                    <label for="captainEmail">Team Captain Email *</label>
+                    <input type="email" id="captainEmail" name="email" required placeholder="team.captain@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="captainPhone">Team Captain Phone *</label>
+                    <input type="tel" id="captainPhone" name="phone" required placeholder="+31 (0) 123 456 789">
+                </div>
+                
+                <div class="form-group">
+                    <label for="teamDescription">Team Description</label>
+                    <textarea id="teamDescription" name="description" rows="4" placeholder="Tell us about your team, your motivation, or any special details..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="teamMembers">Team Members *</label>
+                    <textarea id="teamMembers" name="teamMembers" rows="4" required placeholder="List the names of all team members (one per line)"></textarea>
+                    <small>Please list each team member's name on a separate line</small>
+                </div>
+                
+                <div id="formMessage" class="form-message" style="display: none;"></div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelRegistration">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <span class="button-text">Submit Registration</span>
+                        <span class="button-loading" style="display: none;">Sending...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
