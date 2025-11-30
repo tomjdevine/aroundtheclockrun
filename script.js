@@ -120,33 +120,18 @@ if (signupForm) {
             const formData = new FormData(signupForm);
             const data = Object.fromEntries(formData);
             
-            // Google Apps Script Web App URL - Replace with your own URL after setting up Google Apps Script
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwn7yEDsIPIDI6sIPl19NBDQpdYTIo3kHqUDyNDBiz3VNskvsM_8NXbdYgax0xP7kQ/exec';
+            // Generate email body with all form data
+            const emailBody = generateEmailBody(data);
+            const subject = `Team Registration: ${data.teamName}`;
+            const mailtoLink = `mailto:tomjdevine@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
-            // Submit to Google Sheet via Google Apps Script
-            // Using GET method with query parameters as Google Apps Script works better with GET
-            const params = new URLSearchParams({
-                teamName: data.teamName,
-                teamCaptain: data.teamCaptain,
-                email: data.email,
-                phone: data.phone,
-                description: data.description || '',
-                teamMembers: data.teamMembers,
-                timestamp: new Date().toISOString()
-            });
-            
-            const response = await fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
-                method: 'GET',
-                mode: 'no-cors'
-            });
-            
-            // With no-cors mode, we can't check response status, so show success
-            // The data will be sent to Google Sheets
-            showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
+            // Open email client with pre-filled data
+            window.location.href = mailtoLink;
+            showMessage('Opening your email client to send registration details...', 'success');
             signupForm.reset();
             setTimeout(() => {
                 closeRegistrationModal();
-            }, 2000);
+            }, 1500);
             
         } catch (error) {
             console.error('Error:', error);
