@@ -49,19 +49,21 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
+// Registration Modal - Global function to close modal
+function closeRegistrationModal() {
+    const registrationModal = document.getElementById('registrationModal');
+    if (registrationModal) {
+        registrationModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
 // Registration Modal - Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const registrationModal = document.getElementById('registrationModal');
     const openRegistrationModal = document.getElementById('openRegistrationModal');
-    const closeRegistrationModal = document.getElementById('closeRegistrationModal');
+    const closeRegistrationModalBtn = document.getElementById('closeRegistrationModal');
     const cancelRegistration = document.getElementById('cancelRegistration');
-
-    function closeModal() {
-        if (registrationModal) {
-            registrationModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
 
     if (openRegistrationModal && registrationModal) {
         openRegistrationModal.addEventListener('click', () => {
@@ -70,19 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (closeRegistrationModal) {
-        closeRegistrationModal.addEventListener('click', closeModal);
+    if (closeRegistrationModalBtn) {
+        closeRegistrationModalBtn.addEventListener('click', closeRegistrationModal);
     }
 
     if (cancelRegistration) {
-        cancelRegistration.addEventListener('click', closeModal);
+        cancelRegistration.addEventListener('click', closeRegistrationModal);
     }
 
     // Close modal when clicking outside
     if (registrationModal) {
         registrationModal.addEventListener('click', (e) => {
             if (e.target === registrationModal) {
-                closeModal();
+                closeRegistrationModal();
             }
         });
     }
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && registrationModal && registrationModal.classList.contains('active')) {
-            closeModal();
+            closeRegistrationModal();
         }
     });
 });
@@ -122,21 +124,20 @@ if (signupForm) {
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwn7yEDsIPIDI6sIPl19NBDQpdYTIo3kHqUDyNDBiz3VNskvsM_8NXbdYgax0xP7kQ/exec';
             
             // Submit to Google Sheet via Google Apps Script
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors', // Required for Google Apps Script
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    teamName: data.teamName,
-                    teamCaptain: data.teamCaptain,
-                    email: data.email,
-                    phone: data.phone,
-                    description: data.description || '',
-                    teamMembers: data.teamMembers,
-                    timestamp: new Date().toISOString()
-                })
+            // Using GET method with query parameters as Google Apps Script works better with GET
+            const params = new URLSearchParams({
+                teamName: data.teamName,
+                teamCaptain: data.teamCaptain,
+                email: data.email,
+                phone: data.phone,
+                description: data.description || '',
+                teamMembers: data.teamMembers,
+                timestamp: new Date().toISOString()
+            });
+            
+            const response = await fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
+                method: 'GET',
+                mode: 'no-cors'
             });
             
             // With no-cors mode, we can't check response status, so show success
@@ -144,7 +145,7 @@ if (signupForm) {
             showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
             signupForm.reset();
             setTimeout(() => {
-                closeModal();
+                closeRegistrationModal();
             }, 2000);
             
         } catch (error) {

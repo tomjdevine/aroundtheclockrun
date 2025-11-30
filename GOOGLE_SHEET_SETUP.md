@@ -23,12 +23,34 @@ Follow these steps to set up Google Sheets integration for the registration form
 
 ```javascript
 function doPost(e) {
+  return handleRequest(e);
+}
+
+function doGet(e) {
+  return handleRequest(e);
+}
+
+function handleRequest(e) {
   try {
     // Get the active spreadsheet
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
-    // Parse the JSON data
-    const data = JSON.parse(e.postData.contents);
+    // Get data from POST or GET
+    let data;
+    if (e.postData) {
+      // POST request
+      data = JSON.parse(e.postData.contents);
+    } else {
+      // GET request - data comes from query parameters
+      data = {
+        teamName: e.parameter.teamName || '',
+        teamCaptain: e.parameter.teamCaptain || '',
+        email: e.parameter.email || '',
+        phone: e.parameter.phone || '',
+        description: e.parameter.description || '',
+        teamMembers: e.parameter.teamMembers || ''
+      };
+    }
     
     // Get the current timestamp
     const timestamp = new Date();
