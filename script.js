@@ -121,7 +121,7 @@ if (signupForm) {
             // For now, use mailto as fallback until backend is set up
             // You can replace this with your API endpoint later
             const emailBody = generateEmailBody(data);
-            const mailtoLink = `mailto:info@aroundtheclockrun.nl?subject=Team Registration: ${encodeURIComponent(data.teamName)}&body=${encodeURIComponent(emailBody)}`;
+            const mailtoLink = `mailto:tomjdevine@gmail.com?subject=Team Registration: ${encodeURIComponent(data.teamName)}&body=${encodeURIComponent(emailBody)}`;
             
             // Try to send via API if available, otherwise use mailto
             try {
@@ -131,7 +131,7 @@ if (signupForm) {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        to: 'info@aroundtheclockrun.nl',
+                        to: 'tomjdevine@gmail.com',
                         subject: `New Team Registration: ${data.teamName}`,
                         html: generateSignupEmailHTML(data),
                         teamData: data
@@ -158,7 +158,7 @@ if (signupForm) {
             }
         } catch (error) {
             console.error('Error:', error);
-            showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly at info@aroundtheclockrun.nl', 'error');
+            showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly at tomjdevine@gmail.com', 'error');
         } finally {
             // Reset button state
             if (buttonText) buttonText.style.display = 'inline-block';
