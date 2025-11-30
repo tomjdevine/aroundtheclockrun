@@ -122,7 +122,7 @@ if (signupForm) {
             
             // Generate email body with all form data
             const emailBody = generateEmailBody(data);
-            const subject = `Team Registration: ${data.teamName}`;
+            const subject = `Around the Clock for the NCFS Team Registration: ${data.teamName}`;
             const mailtoLink = `mailto:tomjdevine@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Open email client with pre-filled data
