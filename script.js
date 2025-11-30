@@ -231,27 +231,18 @@ function generateContactEmailHTML(data) {
     `;
 }
 
-// Hero video - ensure it plays all the way through
+// Hero scroll indicator
 document.addEventListener('DOMContentLoaded', () => {
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        heroVideo.addEventListener('loadedmetadata', () => {
-            heroVideo.play().catch(error => {
-                console.log('Video autoplay prevented:', error);
-            });
-        });
-        
-        // Ensure video plays through completely
-        heroVideo.addEventListener('pause', (e) => {
-            if (!heroVideo.ended) {
-                heroVideo.play();
+    const heroScroll = document.querySelector('.hero-scroll');
+    if (heroScroll) {
+        heroScroll.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
-        });
-        
-        // Prevent any interruptions
-        heroVideo.addEventListener('ended', () => {
-            // Video has finished playing completely
-            console.log('Video finished playing');
         });
     }
 });
