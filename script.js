@@ -231,20 +231,19 @@ function generateContactEmailHTML(data) {
     `;
 }
 
-// Hero scroll indicator
+// Hero animations on load
 document.addEventListener('DOMContentLoaded', () => {
-    const heroScroll = document.querySelector('.hero-scroll');
-    if (heroScroll) {
-        heroScroll.addEventListener('click', () => {
-            const aboutSection = document.querySelector('#about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
+    const heroElements = document.querySelectorAll('.hero-left > *, .hero-right');
+    heroElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
 });
 
 // Navbar scroll effect
