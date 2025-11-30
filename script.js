@@ -119,7 +119,7 @@ if (signupForm) {
             const data = Object.fromEntries(formData);
             
             // Google Apps Script Web App URL - Replace with your own URL after setting up Google Apps Script
-            const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwn7yEDsIPIDI6sIPl19NBDQpdYTIo3kHqUDyNDBiz3VNskvsM_8NXbdYgax0xP7kQ/exec';
             
             // Submit to Google Sheet via Google Apps Script
             const response = await fetch(GOOGLE_SCRIPT_URL, {
