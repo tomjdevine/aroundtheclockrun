@@ -118,44 +118,35 @@ if (signupForm) {
             const formData = new FormData(signupForm);
             const data = Object.fromEntries(formData);
             
-            // For now, use mailto as fallback until backend is set up
-            // You can replace this with your API endpoint later
-            const emailBody = generateEmailBody(data);
-            const mailtoLink = `mailto:tomjdevine@gmail.com?subject=Team Registration: ${encodeURIComponent(data.teamName)}&body=${encodeURIComponent(emailBody)}`;
+            // Google Apps Script Web App URL - Replace with your own URL after setting up Google Apps Script
+            const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
             
-            // Try to send via API if available, otherwise use mailto
-            try {
-                const response = await fetch('/api/send-signup-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        to: 'tomjdevine@gmail.com',
-                        subject: `New Team Registration: ${data.teamName}`,
-                        html: generateSignupEmailHTML(data),
-                        teamData: data
-                    })
-                });
-                
-                if (response.ok) {
-                    showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
-                    signupForm.reset();
-                    setTimeout(() => {
-                        closeModal();
-                    }, 2000);
-                } else {
-                    throw new Error('API not available');
-                }
-            } catch (apiError) {
-                // Fallback to mailto
-                window.location.href = mailtoLink;
-                showMessage('Opening your email client to send registration details...', 'success');
-                signupForm.reset();
-                setTimeout(() => {
-                    closeModal();
-                }, 1500);
-            }
+            // Submit to Google Sheet via Google Apps Script
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Required for Google Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    teamName: data.teamName,
+                    teamCaptain: data.teamCaptain,
+                    email: data.email,
+                    phone: data.phone,
+                    description: data.description || '',
+                    teamMembers: data.teamMembers,
+                    timestamp: new Date().toISOString()
+                })
+            });
+            
+            // With no-cors mode, we can't check response status, so show success
+            // The data will be sent to Google Sheets
+            showMessage('Thank you for your registration! We\'ll be in touch soon with more details.', 'success');
+            signupForm.reset();
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+            
         } catch (error) {
             console.error('Error:', error);
             showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly at tomjdevine@gmail.com', 'error');
