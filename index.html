@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Around the Clock for the NCFS - 24 Hour Team Relay Run</title>
+    <title data-i18n="page-title">Rond de Klok voor de NCFS - 24 Uur Team Estafette Loop</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -15,13 +15,17 @@
             <div class="nav-container">
                 <div class="nav-logo">
                     <i class="fas fa-running"></i>
-                    <span>Around the Clock for the NCFS</span>
+                    <span data-i18n="nav-logo">Rond de Klok voor de NCFS</span>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#event">Event Details</a></li>
+                    <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav-about">Over</a></li>
+                    <li><a href="#event" data-i18n="nav-event">Evenement Details</a></li>
                     <li><a href="https://ncfs.nl/" target="_blank">NCFS</a></li>
+                    <li><button id="languageToggle" class="language-toggle" aria-label="Switch language">
+                        <i class="fas fa-globe"></i>
+                        <span data-i18n="nav-language">EN</span>
+                    </button></li>
                 </ul>
             </div>
         </div>
@@ -37,10 +41,10 @@
                         <i class="fas fa-running"></i>
                         <span class="badge-text">RELAY</span>
                     </div>
-                    <h1>24 Hours. One Track. One Goal.</h1>
-                    <p class="hero-description">An endurance relay unlike any other: for 24 hours, teams keep one runner on the move at all times, circling the AVC track to raise critical funds for cystic fibrosis research and support through the NCFS.</p>
+                    <h1 data-i18n="hero-title">24 Uur. Eén Baan. Eén Doel.</h1>
+                    <p class="hero-description" data-i18n="hero-description">Een uithoudingsestafette zoals geen ander: 24 uur lang houden teams één loper constant in beweging, rondjes draaiend op de AVC baan om cruciale fondsen te werven voor cystic fibrosis onderzoek en ondersteuning via de NCFS.</p>
                     <div class="hero-cta">
-                        <button class="cta-button-primary" id="openRegistrationModal">Register Your Team →</button>
+                        <button class="cta-button-primary" id="openRegistrationModal" data-i18n="hero-register">Registreer Je Team →</button>
                     </div>
                 </div>
                 <div class="hero-right">
@@ -56,20 +60,20 @@
                                     </div>
                                 </div>
                                 <div class="visual-date">
-                                    <span class="date-text">April 5th & 6th 2026</span>
+                                    <span class="date-text" data-i18n="hero-date">5 & 6 april 2026</span>
                                 </div>
                                 <div class="visual-stats">
                                     <div class="visual-stat">
                                         <span class="stat-number">24</span>
-                                        <span class="stat-label">Hours</span>
+                                        <span class="stat-label" data-i18n="stat-hours">Uur</span>
                                     </div>
                                     <div class="visual-stat">
                                         <span class="stat-number">4–6</span>
-                                        <span class="stat-label">Runners per Team</span>
+                                        <span class="stat-label" data-i18n="stat-runners">Lopers per Team</span>
                                     </div>
                                     <div class="visual-stat">
-                                        <span class="stat-number">1 Goal</span>
-                                        <span class="stat-label">Support the NCFS</span>
+                                        <span class="stat-number" data-i18n="stat-goal-number">1 Doel</span>
+                                        <span class="stat-label" data-i18n="stat-goal">Steun de NCFS</span>
                                     </div>
                                 </div>
                             </div>
@@ -83,23 +87,23 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About the Event</h2>
+            <h2 data-i18n="about-title">Over het Evenement</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>This 24-hour team relay run is more than just a race – it's a celebration of community, endurance, and support for those affected by Cystic Fibrosis. The Nederlandse Cystic Fibrosis Stichting (NCFS) supports research efforts to tackle this disease as well as families in their times of need.</p>
+                    <p data-i18n="about-text-1">Deze 24-uurs team estafette loop is meer dan alleen een race – het is een viering van gemeenschap, uithoudingsvermogen en steun voor mensen die getroffen zijn door Cystic Fibrosis. De Nederlandse Cystic Fibrosis Stichting (NCFS) ondersteunt onderzoeksinspanningen om deze ziekte aan te pakken en helpt gezinnen in moeilijke tijden.</p>
                     
-                    <p>Teams of max 6 runners will run the 400m athletics track for 24 hours straight, a true test of endurance. While one runner from each team is on the track, the rest of the team will be supporting their runner and enjoying the campsite atmosphere in tents, or campervans next to the track, creating a festival-like feeling.</p>
+                    <p data-i18n="about-text-2">Teams van maximaal 6 lopers zullen 24 uur lang de 400m atletiekbaan lopen, een echte test van uithoudingsvermogen. Terwijl één loper van elk team op de baan is, zal de rest van het team hun loper ondersteunen en genieten van de kampeeratmosfeer in tenten of campers naast de baan, wat een festivalachtig gevoel creëert.</p>
                     
                     <div class="highlight-box">
-                        <h3>Why NCFS?</h3>
-                        <p>The Nederlandse Cystic Fibrosis Stichting provides crucial support to families affected by Cystic Fibrosis, including medical care, research funding, and community support. This event is our way of giving back to an organization that has made a real difference in our lives.</p>
-                        <a href="https://ncfs.nl/" target="_blank" class="highlight-cta">Find out more</a>
+                        <h3 data-i18n="about-why-title">Waarom NCFS?</h3>
+                        <p data-i18n="about-why-text">De Nederlandse Cystic Fibrosis Stichting biedt cruciale ondersteuning aan gezinnen die getroffen zijn door Cystic Fibrosis, waaronder medische zorg, onderzoeksfinanciering en gemeenschapsondersteuning. Dit evenement is onze manier om iets terug te geven aan een organisatie die een echt verschil heeft gemaakt in ons leven.</p>
+                        <a href="https://ncfs.nl/" target="_blank" class="highlight-cta" data-i18n="about-why-link">Meer informatie</a>
                     </div>
                 </div>
                 <div class="about-image">
                     <div class="image-placeholder">
                         <i class="fas fa-heart"></i>
-                        <p>Supporting NCFS</p>
+                        <p data-i18n="about-image-text">Steun de NCFS</p>
                     </div>
                 </div>
             </div>
@@ -109,27 +113,27 @@
     <!-- Event Details Section -->
     <section id="event" class="event-details">
         <div class="container">
-            <h2>Event Details</h2>
+            <h2 data-i18n="event-title">Evenement Details</h2>
             <div class="details-grid">
                 <div class="detail-card">
                     <i class="fas fa-calendar-alt"></i>
-                    <h3>Date & Time</h3>
-                    <p>The run begins at 14:00 on April 5th 2026 and ends at 14:00 on April 6th</p>
+                    <h3 data-i18n="event-date-title">Datum & Tijd</h3>
+                    <p data-i18n="event-date-text">De loop begint om 14:00 op 5 april 2026 en eindigt om 14:00 op 6 april</p>
                 </div>
                 <div class="detail-card">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
+                    <h3 data-i18n="event-location-title">Locatie</h3>
                     <p>Atletiek Vereniging Castricum, Zeeweg 4, 1901 NZ, Castricum</p>
                 </div>
                 <div class="detail-card">
                     <i class="fas fa-users"></i>
-                    <h3>Team Size</h3>
-                    <p>Max 6 runners per team. Teams can rotate runners as needed during the 24 hours</p>
+                    <h3 data-i18n="event-team-title">Teamgrootte</h3>
+                    <p data-i18n="event-team-text">Maximaal 6 lopers per team. Teams kunnen lopers naar behoefte roteren tijdens de 24 uur</p>
                 </div>
                 <div class="detail-card">
                     <i class="fas fa-trophy"></i>
-                    <h3>Prizes</h3>
-                    <p>Top 3 teams for funds raised and total distance covered</p>
+                    <h3 data-i18n="event-prizes-title">Prijzen</h3>
+                    <p data-i18n="event-prizes-text">Top 3 teams voor opgehaalde fondsen en totale afgelegde afstand</p>
                 </div>
             </div>
         </div>
@@ -138,34 +142,34 @@
     <!-- Rules Section -->
     <section class="rules">
         <div class="container">
-            <h2>Event Rules & Guidelines</h2>
+            <h2 data-i18n="rules-title">Evenement Regels & Richtlijnen</h2>
             <div class="rules-content">
                 <div class="rule-category">
-                    <h3><i class="fas fa-running"></i> Running Rules</h3>
+                    <h3><i class="fas fa-running"></i> <span data-i18n="rules-running-title">Loopregels</span></h3>
                     <ul>
-                        <li>Minimum of one runner per team on the track at any time</li>
-                        <li>Teams can rotate runners as frequently as needed</li>
-                        <li>All runners must stay within the designated track area</li>
-                        <li>Safety is our top priority - follow all track rules</li>
+                        <li data-i18n="rules-running-1">Minimaal één loper per team op de baan te allen tijde</li>
+                        <li data-i18n="rules-running-2">Teams kunnen lopers zo vaak roteren als nodig</li>
+                        <li data-i18n="rules-running-3">Alle lopers moeten binnen het aangewezen baan gebied blijven</li>
+                        <li data-i18n="rules-running-4">Veiligheid is onze topprioriteit - volg alle baanregels</li>
                     </ul>
                 </div>
                 <div class="rule-category">
-                    <h3><i class="fas fa-campground"></i> Camping & Facilities</h3>
+                    <h3><i class="fas fa-campground"></i> <span data-i18n="rules-camping-title">Kamperen & Faciliteiten</span></h3>
                     <ul>
-                        <li>Teams can set up tents, or bring campervans</li>
-                        <li>Designated camping areas will be provided</li>
-                        <li>Basic facilities will be available on-site</li>
-                        <li>Please bring your own food and drinks</li>
-                        <li>Respect other teams' space and keep noise levels reasonable</li>
+                        <li data-i18n="rules-camping-1">Teams kunnen tenten opzetten of campers meenemen</li>
+                        <li data-i18n="rules-camping-2">Aangewezen kampeergebieden worden beschikbaar gesteld</li>
+                        <li data-i18n="rules-camping-3">Basisvoorzieningen zijn beschikbaar op locatie</li>
+                        <li data-i18n="rules-camping-4">Neem je eigen eten en drinken mee</li>
+                        <li data-i18n="rules-camping-5">Respecteer de ruimte van andere teams en houd het geluidsniveau redelijk</li>
                     </ul>
                 </div>
                 <div class="rule-category">
-                    <h3><i class="fas fa-heart"></i> Fundraising</h3>
+                    <h3><i class="fas fa-heart"></i> <span data-i18n="rules-fundraising-title">Fondsenwerving</span></h3>
                     <ul>
-                        <li>Each team is encouraged to raise funds for NCFS</li>
-                        <li>Fundraising progress will be tracked throughout the event</li>
-                        <li>All donations go directly to NCFS</li>
-                        <li>Teams will create their own actie on the NCFS fundraising site</li>
+                        <li data-i18n="rules-fundraising-1">Elk team wordt aangemoedigd om fondsen te werven voor NCFS</li>
+                        <li data-i18n="rules-fundraising-2">Fondsenwervingsvoortgang wordt gedurende het evenement bijgehouden</li>
+                        <li data-i18n="rules-fundraising-3">Alle donaties gaan direct naar NCFS</li>
+                        <li data-i18n="rules-fundraising-4">Teams maken hun eigen actie aan op de NCFS fondsenwervingssite</li>
                     </ul>
                 </div>
             </div>
@@ -177,24 +181,24 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Around the Clock Run</h3>
-                    <p>24-hour team relay run supporting the Nederlandse Cystic Fibrosis Stichting (NCFS)</p>
+                    <h3 data-i18n="footer-title">Rond de Klok Loop</h3>
+                    <p data-i18n="footer-description">24-uurs team estafette loop ter ondersteuning van de Nederlandse Cystic Fibrosis Stichting (NCFS)</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer-links-title">Snelle Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#event">Event Details</a></li>
+                        <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                        <li><a href="#about" data-i18n="nav-about">Over</a></li>
+                        <li><a href="#event" data-i18n="nav-event">Evenement Details</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Support NCFS</h4>
-                    <p>Learn more about the Nederlandse Cystic Fibrosis Stichting and their important work supporting families affected by Cystic Fibrosis.</p>
+                    <h4 data-i18n="footer-support-title">Steun NCFS</h4>
+                    <p data-i18n="footer-support-text">Lees meer over de Nederlandse Cystic Fibrosis Stichting en hun belangrijke werk ter ondersteuning van gezinnen die getroffen zijn door Cystic Fibrosis.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Around the Clock Run. All rights reserved.</p>
+                <p data-i18n="footer-copyright">&copy; 2024 Rond de Klok Loop. Alle rechten voorbehouden.</p>
             </div>
         </div>
     </footer>
@@ -203,52 +207,52 @@
     <div id="registrationModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Register Your Team</h2>
+                <h2 data-i18n="form-title">Registreer Je Team</h2>
                 <button class="modal-close" id="closeRegistrationModal">&times;</button>
             </div>
             <form id="signupForm" class="registration-form">
                 <div class="form-group">
-                    <label for="teamName">Team Name *</label>
-                    <input type="text" id="teamName" name="teamName" required placeholder="Enter your team name">
+                    <label for="teamName" data-i18n="form-team-name">Teamnaam *</label>
+                    <input type="text" id="teamName" name="teamName" required data-i18n-placeholder="form-team-name-placeholder" placeholder="Voer je teamnaam in">
                 </div>
                 
                 <div class="form-group">
-                    <label for="teamCaptain">Team Captain Name *</label>
-                    <input type="text" id="teamCaptain" name="teamCaptain" required placeholder="Full name of team captain">
+                    <label for="teamCaptain" data-i18n="form-captain-name">Team Captain Naam *</label>
+                    <input type="text" id="teamCaptain" name="teamCaptain" required data-i18n-placeholder="form-captain-name-placeholder" placeholder="Volledige naam van team captain">
                 </div>
                 
                 <div class="form-group">
-                    <label for="captainEmail">Team Captain Email *</label>
+                    <label for="captainEmail" data-i18n="form-captain-email">Team Captain Email *</label>
                     <input type="email" id="captainEmail" name="email" required placeholder="team.captain@example.com">
                 </div>
                 
                 <div class="form-group">
-                    <label for="captainPhone">Team Captain Phone *</label>
+                    <label for="captainPhone" data-i18n="form-captain-phone">Team Captain Telefoon *</label>
                     <input type="tel" id="captainPhone" name="phone" required placeholder="+31 (0) 123 456 789">
                 </div>
                 
                 <div class="form-group">
-                    <label for="teamDescription">Team Description</label>
-                    <textarea id="teamDescription" name="description" rows="4" placeholder="Tell us about your team, your motivation, or any special details..."></textarea>
+                    <label for="teamDescription" data-i18n="form-description">Team Beschrijving</label>
+                    <textarea id="teamDescription" name="description" rows="4" data-i18n-placeholder="form-description-placeholder" placeholder="Vertel ons over je team, je motivatie of bijzondere details..."></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="teamMembers">Team Members (max 6) *</label>
-                    <textarea id="teamMembers" name="teamMembers" rows="4" required placeholder="List the names of all team members (one per line)"></textarea>
-                    <small>Please list each team member's name on a separate line</small>
+                    <label for="teamMembers" data-i18n="form-members">Teamleden (max 6) *</label>
+                    <textarea id="teamMembers" name="teamMembers" rows="4" required data-i18n-placeholder="form-members-placeholder" placeholder="Lijst de namen van alle teamleden op (één per regel)"></textarea>
+                    <small data-i18n="form-members-hint">Gelieve de naam van elk teamlid op een aparte regel te vermelden</small>
                 </div>
                 
                 <div id="formMessage" class="form-message" style="display: none;"></div>
                 
                 <div class="form-info-box" style="background-color: #f0f7ff; border-left: 4px solid #4a90e2; padding: 15px; margin: 20px 0; border-radius: 4px;">
-                    <p style="margin: 0; color: #333; font-size: 14px;"><strong>What happens next?</strong> After you submit your registration, the organizers will confirm your registration and send you the logistics information for the run by email in due course.</p>
+                    <p style="margin: 0; color: #333; font-size: 14px;"><strong data-i18n="form-info-title">Wat gebeurt er daarna?</strong> <span data-i18n="form-info-text">Nadat je je registratie hebt ingediend, zullen de organisatoren je registratie bevestigen en je de logistieke informatie voor de loop per e-mail sturen in de loop van de tijd.</span></p>
                 </div>
                 
                 <div class="form-actions">
-                    <button type="button" class="btn-secondary" id="cancelRegistration">Cancel</button>
+                    <button type="button" class="btn-secondary" id="cancelRegistration" data-i18n="form-cancel">Annuleren</button>
                     <button type="submit" class="btn-primary">
-                        <span class="button-text">Submit Registration</span>
-                        <span class="button-loading" style="display: none;">Sending...</span>
+                        <span class="button-text" data-i18n="form-submit">Registratie Indienen</span>
+                        <span class="button-loading" style="display: none;" data-i18n="form-sending">Verzenden...</span>
                     </button>
                 </div>
             </form>

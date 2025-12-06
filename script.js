@@ -1,3 +1,195 @@
+// Translation System
+const translations = {
+    nl: {
+        'page-title': 'Rond de Klok voor de NCFS - 24 Uur Team Estafette Loop',
+        'nav-logo': 'Rond de Klok voor de NCFS',
+        'nav-home': 'Home',
+        'nav-about': 'Over',
+        'nav-event': 'Evenement Details',
+        'nav-language': 'EN',
+        'hero-title': '24 Uur. Eén Baan. Eén Doel.',
+        'hero-description': 'Een uithoudingsestafette zoals geen ander: 24 uur lang houden teams één loper constant in beweging, rondjes draaiend op de AVC baan om cruciale fondsen te werven voor cystic fibrosis onderzoek en ondersteuning via de NCFS.',
+        'hero-register': 'Registreer Je Team →',
+        'stat-hours': 'Uur',
+        'stat-runners': 'Lopers per Team',
+        'stat-goal-number': '1 Doel',
+        'stat-goal': 'Steun de NCFS',
+        'hero-date': '5 & 6 april 2026',
+        'about-title': 'Over het Evenement',
+        'about-text-1': 'Deze 24-uurs team estafette loop is meer dan alleen een race – het is een viering van gemeenschap, uithoudingsvermogen en steun voor mensen die getroffen zijn door Cystic Fibrosis. De Nederlandse Cystic Fibrosis Stichting (NCFS) ondersteunt onderzoeksinspanningen om deze ziekte aan te pakken en helpt gezinnen in moeilijke tijden.',
+        'about-text-2': 'Teams van maximaal 6 lopers zullen 24 uur lang de 400m atletiekbaan lopen, een echte test van uithoudingsvermogen. Terwijl één loper van elk team op de baan is, zal de rest van het team hun loper ondersteunen en genieten van de kampeeratmosfeer in tenten of campers naast de baan, wat een festivalachtig gevoel creëert.',
+        'about-why-title': 'Waarom NCFS?',
+        'about-why-text': 'De Nederlandse Cystic Fibrosis Stichting biedt cruciale ondersteuning aan gezinnen die getroffen zijn door Cystic Fibrosis, waaronder medische zorg, onderzoeksfinanciering en gemeenschapsondersteuning. Dit evenement is onze manier om iets terug te geven aan een organisatie die een echt verschil heeft gemaakt in ons leven.',
+        'about-why-link': 'Meer informatie',
+        'about-image-text': 'Steun de NCFS',
+        'event-title': 'Evenement Details',
+        'event-date-title': 'Datum & Tijd',
+        'event-date-text': 'De loop begint om 14:00 op 5 april 2026 en eindigt om 14:00 op 6 april',
+        'event-location-title': 'Locatie',
+        'event-team-title': 'Teamgrootte',
+        'event-team-text': 'Maximaal 6 lopers per team. Teams kunnen lopers naar behoefte roteren tijdens de 24 uur',
+        'event-prizes-title': 'Prijzen',
+        'event-prizes-text': 'Top 3 teams voor opgehaalde fondsen en totale afgelegde afstand',
+        'rules-title': 'Evenement Regels & Richtlijnen',
+        'rules-running-title': 'Loopregels',
+        'rules-running-1': 'Minimaal één loper per team op de baan te allen tijde',
+        'rules-running-2': 'Teams kunnen lopers zo vaak roteren als nodig',
+        'rules-running-3': 'Alle lopers moeten binnen het aangewezen baan gebied blijven',
+        'rules-running-4': 'Veiligheid is onze topprioriteit - volg alle baanregels',
+        'rules-camping-title': 'Kamperen & Faciliteiten',
+        'rules-camping-1': 'Teams kunnen tenten opzetten of campers meenemen',
+        'rules-camping-2': 'Aangewezen kampeergebieden worden beschikbaar gesteld',
+        'rules-camping-3': 'Basisvoorzieningen zijn beschikbaar op locatie',
+        'rules-camping-4': 'Neem je eigen eten en drinken mee',
+        'rules-camping-5': 'Respecteer de ruimte van andere teams en houd het geluidsniveau redelijk',
+        'rules-fundraising-title': 'Fondsenwerving',
+        'rules-fundraising-1': 'Elk team wordt aangemoedigd om fondsen te werven voor NCFS',
+        'rules-fundraising-2': 'Fondsenwervingsvoortgang wordt gedurende het evenement bijgehouden',
+        'rules-fundraising-3': 'Alle donaties gaan direct naar NCFS',
+        'rules-fundraising-4': 'Teams maken hun eigen actie aan op de NCFS fondsenwervingssite',
+        'footer-title': 'Rond de Klok Loop',
+        'footer-description': '24-uurs team estafette loop ter ondersteuning van de Nederlandse Cystic Fibrosis Stichting (NCFS)',
+        'footer-links-title': 'Snelle Links',
+        'footer-support-title': 'Steun NCFS',
+        'footer-support-text': 'Lees meer over de Nederlandse Cystic Fibrosis Stichting en hun belangrijke werk ter ondersteuning van gezinnen die getroffen zijn door Cystic Fibrosis.',
+        'footer-copyright': '© 2024 Rond de Klok Loop. Alle rechten voorbehouden.',
+        'form-title': 'Registreer Je Team',
+        'form-team-name': 'Teamnaam *',
+        'form-team-name-placeholder': 'Voer je teamnaam in',
+        'form-captain-name': 'Team Captain Naam *',
+        'form-captain-name-placeholder': 'Volledige naam van team captain',
+        'form-captain-email': 'Team Captain Email *',
+        'form-captain-phone': 'Team Captain Telefoon *',
+        'form-description': 'Team Beschrijving',
+        'form-description-placeholder': 'Vertel ons over je team, je motivatie of bijzondere details...',
+        'form-members': 'Teamleden (max 6) *',
+        'form-members-placeholder': 'Lijst de namen van alle teamleden op (één per regel)',
+        'form-members-hint': 'Gelieve de naam van elk teamlid op een aparte regel te vermelden',
+        'form-info-title': 'Wat gebeurt er daarna?',
+        'form-info-text': 'Nadat je je registratie hebt ingediend, zullen de organisatoren je registratie bevestigen en je de logistieke informatie voor de loop per e-mail sturen in de loop van de tijd.',
+        'form-cancel': 'Annuleren',
+        'form-submit': 'Registratie Indienen',
+        'form-sending': 'Verzenden...'
+    },
+    en: {
+        'page-title': 'Around the Clock for the NCFS - 24 Hour Team Relay Run',
+        'nav-logo': 'Around the Clock for the NCFS',
+        'nav-home': 'Home',
+        'nav-about': 'About',
+        'nav-event': 'Event Details',
+        'nav-language': 'NL',
+        'hero-title': '24 Hours. One Track. One Goal.',
+        'hero-description': 'An endurance relay unlike any other: for 24 hours, teams keep one runner on the move at all times, circling the AVC track to raise critical funds for cystic fibrosis research and support through the NCFS.',
+        'hero-register': 'Register Your Team →',
+        'stat-hours': 'Hours',
+        'stat-runners': 'Runners per Team',
+        'stat-goal-number': '1 Goal',
+        'stat-goal': 'Support the NCFS',
+        'hero-date': 'April 5th & 6th 2026',
+        'about-title': 'About the Event',
+        'about-text-1': 'This 24-hour team relay run is more than just a race – it\'s a celebration of community, endurance, and support for those affected by Cystic Fibrosis. The Nederlandse Cystic Fibrosis Stichting (NCFS) supports research efforts to tackle this disease as well as families in their times of need.',
+        'about-text-2': 'Teams of max 6 runners will run the 400m athletics track for 24 hours straight, a true test of endurance. While one runner from each team is on the track, the rest of the team will be supporting their runner and enjoying the campsite atmosphere in tents, or campervans next to the track, creating a festival-like feeling.',
+        'about-why-title': 'Why NCFS?',
+        'about-why-text': 'The Nederlandse Cystic Fibrosis Stichting provides crucial support to families affected by Cystic Fibrosis, including medical care, research funding, and community support. This event is our way of giving back to an organization that has made a real difference in our lives.',
+        'about-why-link': 'Find out more',
+        'about-image-text': 'Supporting NCFS',
+        'event-title': 'Event Details',
+        'event-date-title': 'Date & Time',
+        'event-date-text': 'The run begins at 14:00 on April 5th 2026 and ends at 14:00 on April 6th',
+        'event-location-title': 'Location',
+        'event-team-title': 'Team Size',
+        'event-team-text': 'Max 6 runners per team. Teams can rotate runners as needed during the 24 hours',
+        'event-prizes-title': 'Prizes',
+        'event-prizes-text': 'Top 3 teams for funds raised and total distance covered',
+        'rules-title': 'Event Rules & Guidelines',
+        'rules-running-title': 'Running Rules',
+        'rules-running-1': 'Minimum of one runner per team on the track at any time',
+        'rules-running-2': 'Teams can rotate runners as frequently as needed',
+        'rules-running-3': 'All runners must stay within the designated track area',
+        'rules-running-4': 'Safety is our top priority - follow all track rules',
+        'rules-camping-title': 'Camping & Facilities',
+        'rules-camping-1': 'Teams can set up tents, or bring campervans',
+        'rules-camping-2': 'Designated camping areas will be provided',
+        'rules-camping-3': 'Basic facilities will be available on-site',
+        'rules-camping-4': 'Please bring your own food and drinks',
+        'rules-camping-5': 'Respect other teams\' space and keep noise levels reasonable',
+        'rules-fundraising-title': 'Fundraising',
+        'rules-fundraising-1': 'Each team is encouraged to raise funds for NCFS',
+        'rules-fundraising-2': 'Fundraising progress will be tracked throughout the event',
+        'rules-fundraising-3': 'All donations go directly to NCFS',
+        'rules-fundraising-4': 'Teams will create their own actie on the NCFS fundraising site',
+        'footer-title': 'Around the Clock Run',
+        'footer-description': '24-hour team relay run supporting the Nederlandse Cystic Fibrosis Stichting (NCFS)',
+        'footer-links-title': 'Quick Links',
+        'footer-support-title': 'Support NCFS',
+        'footer-support-text': 'Learn more about the Nederlandse Cystic Fibrosis Stichting and their important work supporting families affected by Cystic Fibrosis.',
+        'footer-copyright': '© 2024 Around the Clock Run. All rights reserved.',
+        'form-title': 'Register Your Team',
+        'form-team-name': 'Team Name *',
+        'form-team-name-placeholder': 'Enter your team name',
+        'form-captain-name': 'Team Captain Name *',
+        'form-captain-name-placeholder': 'Full name of team captain',
+        'form-captain-email': 'Team Captain Email *',
+        'form-captain-phone': 'Team Captain Phone *',
+        'form-description': 'Team Description',
+        'form-description-placeholder': 'Tell us about your team, your motivation, or any special details...',
+        'form-members': 'Team Members (max 6) *',
+        'form-members-placeholder': 'List the names of all team members (one per line)',
+        'form-members-hint': 'Please list each team member\'s name on a separate line',
+        'form-info-title': 'What happens next?',
+        'form-info-text': 'After you submit your registration, the organizers will confirm your registration and send you the logistics information for the run by email in due course.',
+        'form-cancel': 'Cancel',
+        'form-submit': 'Submit Registration',
+        'form-sending': 'Sending...'
+    }
+};
+
+// Get current language from localStorage or default to Dutch
+let currentLanguage = localStorage.getItem('language') || 'nl';
+
+// Function to update all translatable elements
+function updateLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    document.documentElement.lang = lang;
+    
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    
+    // Update all elements with data-i18n-placeholder attribute
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            element.placeholder = translations[lang][key];
+        }
+    });
+    
+    // Update page title
+    const titleElement = document.querySelector('title');
+    if (titleElement && translations[lang]['page-title']) {
+        titleElement.textContent = translations[lang]['page-title'];
+    }
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateLanguage(currentLanguage);
+    
+    // Language toggle button
+    const languageToggle = document.getElementById('languageToggle');
+    if (languageToggle) {
+        languageToggle.addEventListener('click', () => {
+            const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
+            updateLanguage(newLang);
+        });
+    }
+});
+
 // Mobile Navigation
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -122,12 +314,17 @@ if (signupForm) {
             
             // Generate email body with all form data
             const emailBody = generateEmailBody(data);
-            const subject = `Around the Clock for the NCFS Team Registration: ${data.teamName}`;
+            const subject = currentLanguage === 'nl' 
+                ? `Rond de Klok voor de NCFS Team Registratie: ${data.teamName}`
+                : `Around the Clock for the NCFS Team Registration: ${data.teamName}`;
             const mailtoLink = `mailto:tomjdevine@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Open email client with pre-filled data
             window.location.href = mailtoLink;
-            showMessage('Opening your email client to send registration details...', 'success');
+            const successMessage = currentLanguage === 'nl'
+                ? 'Je e-mailclient wordt geopend om registratiegegevens te verzenden...'
+                : 'Opening your email client to send registration details...';
+            showMessage(successMessage, 'success');
             signupForm.reset();
             setTimeout(() => {
                 closeRegistrationModal();
@@ -135,7 +332,10 @@ if (signupForm) {
             
         } catch (error) {
             console.error('Error:', error);
-            showMessage('Sorry, there was an error submitting your registration. Please try again or contact us directly at tomjdevine@gmail.com', 'error');
+            const errorMessage = currentLanguage === 'nl'
+                ? 'Sorry, er is een fout opgetreden bij het indienen van je registratie. Probeer het opnieuw of neem rechtstreeks contact met ons op via tomjdevine@gmail.com'
+                : 'Sorry, there was an error submitting your registration. Please try again or contact us directly at tomjdevine@gmail.com';
+            showMessage(errorMessage, 'error');
         } finally {
             // Reset button state
             if (buttonText) buttonText.style.display = 'inline-block';
@@ -146,7 +346,24 @@ if (signupForm) {
 }
 
 function generateEmailBody(data) {
-    return `Team Registration Form Submission
+    const isDutch = currentLanguage === 'nl';
+    return isDutch 
+        ? `Team Registratie Formulier Inzending
+
+Teamnaam: ${data.teamName}
+Team Captain: ${data.teamCaptain}
+Email: ${data.email}
+Telefoon: ${data.phone}
+
+Team Beschrijving:
+${data.description || 'N/A'}
+
+Teamleden:
+${data.teamMembers}
+
+---
+Deze registratie is ingediend via de Rond de Klok Loop website.`
+        : `Team Registration Form Submission
 
 Team Name: ${data.teamName}
 Team Captain: ${data.teamCaptain}
@@ -389,7 +606,10 @@ if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
         if (!validateForm(signupForm)) {
             e.preventDefault();
-            showMessage('Please fill in all required fields correctly.', 'error');
+            const errorMessage = currentLanguage === 'nl'
+                ? 'Vul alle verplichte velden correct in.'
+                : 'Please fill in all required fields correctly.';
+            showMessage(errorMessage, 'error');
         }
     });
 }
@@ -398,7 +618,10 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         if (!validateForm(contactForm)) {
             e.preventDefault();
-            showMessage('Please fill in all required fields correctly.', 'error');
+            const errorMessage = currentLanguage === 'nl'
+                ? 'Vul alle verplichte velden correct in.'
+                : 'Please fill in all required fields correctly.';
+            showMessage(errorMessage, 'error');
         }
     });
 }
